@@ -1,16 +1,10 @@
 <script setup>
-import Stepper from './components/Stepper.vue'
-import StartQuizz from './components/StartQuizz.vue'
-
+// import StartQuiz from './components/StartQuiz.vue'
+import GuideQuiz from './components/GuideQuiz.vue'
 </script>
 <template>
- 
 
-  <header>
-    <Stepper/>
-  </header>
-  <main>
-    <StartQuizz/>
-  </main>
+    <!-- <StartQuiz></StartQuiz> -->
+    <GuideQuiz></GuideQuiz>
 </template>
 
