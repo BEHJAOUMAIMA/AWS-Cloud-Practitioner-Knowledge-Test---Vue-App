@@ -178,10 +178,28 @@ const nextQuestion = ()=>{
                 <p id="question" class="question-titre">{{getCurrentQuestion.question}}</p>
             </div>
             <div id="options" class="options">
-                <p class="answer" id="option1">Amazon EC2 costs are billed on a monthly basis</p>
-                <p class="answer" id="option2">Users retain full administrative access to their Amazon EC2 instances</p>
-                <p class="answer" id="option3">Amazon EC2 instances can be launched on demand when needed</p>
-                <p class="answer" id="option4">Users can permanently run enough instances to handle peak workloads</p>
+                <label v-for="(option,index) in getCurrentQuestion.options" :key="index"
+                    :class="`option ${
+                        getCurrentQuestion.selected == index ? 
+                        index == getCurrentQuestion.answer ? 
+                        'correct' 
+                        : 'wrong' 
+                        : ''                 
+                    }${
+                        getCurrentQuestion.selected != null && index != getCurrentQuestion.selected
+                        ? 'disabled'
+                        : ''
+                    }`"
+                >
+                    <input type="radio"
+                        :name="getCurrentQuestion.index"
+                        :value="index"
+                        v-model="getCurrentQuestion.selected"
+                        :disabled="getCurrentQuestion.selected"
+                        @change="setAnswer"
+                    >
+                    <span>{{ option }}</span>
+                </label>
             </div>
             <div class="app-footer">
                 <p id="total"> 1 of 10 questions</p>
@@ -237,27 +255,7 @@ const nextQuestion = ()=>{
         font-size: 20px;
         text-align: center;
     }
-    .options{
-        padding: 0 20px 20px;
-        margin-top: 15px;
-        height: 430px;
-        width: 100%;
-    }
-    .answer{
-        height: 68px;
-        width: 100%;
-        margin: 30px auto;
-        border-radius: 10px;
-        padding: 20px 20px;
-        font-size: 15px;
-        overflow: hidden;
-        cursor: pointer;
-        border: 1px solid gray;
-        font-size: 18px;
-    }
-    .answer:hover{
-        background-color: rgb(40, 94, 68);
-    }
+
     .app-footer{
         display: flex;
         align-items: center;
@@ -272,6 +270,39 @@ const nextQuestion = ()=>{
         background-color: rgb(33, 64, 49);
         border: none;
         border-radius: 4px;
-}
+    }
+    .options{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 20px 20px;
+        margin-top: 15px;
+        height: 430px;
+        width: 100%;
+    }
+    .option{
+        background-color: transparent;
+        display: block;
+        cursor: pointer;
+        width: 100%;
+        margin: 15px auto;
+        border-radius: 10px;
+        padding: 20px 20px;
+        font-size: 15px;
+        overflow: hidden;
+        border: 1px solid gray;
+        font-size: 18px;
+    }
+    .option:hover{
+        background-color: rgb(40, 94, 68);
+    }
+    .option.correct{
+        background-color: #2cee7d;
+        color: black;
+    }
+    .option.wrong{
+        background-color: #ff5a5f;
+    }
+
 </style>
 
