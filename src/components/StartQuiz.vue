@@ -47,6 +47,7 @@
         justify-content: center;
         cursor: pointer;
         border-radius: 20px;
+        border: none;
     }
     .start-btn:hover{
         color: rgb(61, 131, 97);
