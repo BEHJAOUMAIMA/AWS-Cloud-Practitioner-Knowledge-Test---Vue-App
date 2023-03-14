@@ -1,7 +1,14 @@
+<script>
+export default {
+  components: {
+    Stepper
+  },
+}
+</script>
 <script setup>
 // import StartQuiz from './components/StartQuiz.vue'
 // import GuideQuiz from './components/GuideQuiz.vue'
-// import Stepper from './components/Stepper.vue'
+import Stepper from './components/Stepper.vue'
 // import Quiz from './components/Quiz.vue'
 // import Result from './components/Result.vue'
 
@@ -183,13 +190,14 @@ const nextQuestion = ()=>{
 const startQuiz =()=>{
     start.value = true;
     myQuiz.value = true;
+    step++;
 }
 const exit=()=>{
     location.reload();
 }
 </script>
 <template>
-
+    <Stepper/>
     <main class="app">
         <section class="welcome" v-if="!start">
             <div class="start">
@@ -217,13 +225,6 @@ const exit=()=>{
             <div class="app-heading">
                 <div class="categorie">
                     AWS Certified Cloud Practitioner (CLF-C01) - Sample Exam Questions
-                </div>
-                <div class="progress">
-                    <div>
-                        <div class="progress-done">
-    
-                        </div>
-                    </div>
                 </div>
             </div>
             <hr class="line">
