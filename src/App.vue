@@ -4,6 +4,7 @@
 // import Stepper from './components/Stepper.vue'
 // import Quiz from './components/Quiz.vue'
 // import Result from './components/Result.vue'
+
 import {ref, computed} from 'vue';
 
 var incorrect= [];
@@ -254,7 +255,7 @@ const exit=()=>{
                 </label>
             </div>
             <div class="app-footer">
-                <p id="total"> 1 of 10 questions</p>
+                <p id="total"> {{ getCurrentQuestion.index + 1 }} of {{ questions.length }} questions</p>
                 <button @click="nextQuestion"
                     :disabled="!getCurrentQuestion.selected"
                 class="next-btn" id="btnNext"> 
@@ -526,7 +527,6 @@ const exit=()=>{
     }
     .justif{
         background-color: rgb(46, 79, 79);
-        color: black;
         padding: 10px 15px;
         border-radius: 5px;
     }
