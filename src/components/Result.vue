@@ -11,7 +11,6 @@
             <button id="quit">Quitter</button>
             <button id="startAgain">Recommencer !</button>
         </div>
-
     </div>
 
 </template>
